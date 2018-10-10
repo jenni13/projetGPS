@@ -7,8 +7,10 @@ from gps import *
 from time import *
 import time
 import threading
+import webbrowser
 
-
+url = 'http://www.google.fr/maps/'
+chrome_path = '/usr/bin/google-chrome %s'
 os.system('clear')
 
 class GpsPoller(threading.Thread):
@@ -44,7 +46,6 @@ if __name__ == '__main__':
 
 	gpsp.running = False
 	print 'redirection page web'
-
-	var = 'https://maps.google.com/?q=<lat>,<lng>'
-
+	webbrowser.get(chrome_path).open(url)
+	print 'allo'
 	sys.exit(0)

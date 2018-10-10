@@ -25,13 +25,13 @@ class GpsPoller(threading.Thread):
   def run(self):
     global gpsd
     while gpsp.running:
-      gpsd.next() #this will continue to loop and grab EACH set of gpsd info to clear the buffer
+     gpsd.next() #this will continue to loop and grab EACH set of gpsd info to clear the buffer
 
 if __name__ == '__main__':
   gpsp = GpsPoller() # create the thread
   try:
-    gpsp.start() # start it up
-    while True:
+   gpsp.start() # start it up
+   while True:
       #It may take a second or two to get good data
       #print gpsd.fix.latitude,', ',gpsd.fix.longitude,'  Time: ',gpsd.utc
 
@@ -42,8 +42,8 @@ if __name__ == '__main__':
       print '----------------------------------------'
       print 'latitude    ' , gpsd.fix.latitude
       print 'longitude   ' , gpsd.fix.longitude
-      print 'time utc    ' , gpsd.utc,' + ', gpsd.fix.time
-      print 'altitude (m)' , gpsd.fix.altitude
+     # print 'time utc    ' , gpsd.utc,' + ', gpsd.fix.time
+     # print 'altitude (m)' , gpsd.fix.altitude
      # print 'eps         ' , gpsd.fix.eps
      # print 'epx         ' , gpsd.fix.epx
      # print 'epv         ' , gpsd.fix.epv
@@ -51,9 +51,9 @@ if __name__ == '__main__':
      # print 'speed (m/s) ' , gpsd.fix.speed
      # print 'climb       ' , gpsd.fix.climb
      # print 'track       ' , gpsd.fix.track
-      print 'mode ok?     ' , gpsd.fix.mode
-      print
-      print 'satellites     ' , gpsd.satellites
+   #  print 'mode ok?     ' , gpsd.fix.mode
+   #  print
+   #  print 'satellites     ' , gpsd.satellites
 
       time.sleep(5) #set to whatever
 
@@ -61,6 +61,7 @@ if __name__ == '__main__':
     print "\nKilling Thread..."
     gpsp.running = False
     gpsp.join() # wait for the thread to finish what it's doing
-  print "Done.\nExiting."
+
+    print "Done.\nExiting."
 
 
