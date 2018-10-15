@@ -31,7 +31,7 @@ for new_data in gps_socket:
 lon = data_stream.lat
 lat = data_stream.lon
 
-MQTT_SERVER = "192.168.1.68"
+MQTT_SERVER = "192.168.0.88"
 MQTT_PATH = "LongLat"
 
 publish.single(MQTT_PATH,'long = '+str(lon)+' lat = '+str(lat),hostname=MQTT_SERVER)

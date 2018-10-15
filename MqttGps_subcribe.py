@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 import paho.mqtt.client as mqtt
+import webbrowser
 
 MQTT_SERVER = "localhost"
 MQTT_PATH = "LongLat"
@@ -29,3 +30,10 @@ client.connect(MQTT_SERVER, 1883, 60)
 # Other loop*() functions are available that give a threaded interface and a
 # manual interface.
 client.loop_forever()
+#client.loop(15)
+long= str(msg.payload)
+latt = str(msg.payload)
+url = "http://maps.google.com/maps?q="+str(long)+","+str(latt)
+chrome_path = '/usr/bin/google-chrome %s'
+webbrowser.get(chrome_path).open(url)
+
