@@ -34,4 +34,4 @@ lat = data_stream.lon
 MQTT_SERVER = "192.168.0.88"
 MQTT_PATH = "LongLat"
 
-publish.single(MQTT_PATH,'long = '+str(lon)+' lat = '+str(lat),hostname=MQTT_SERVER)
+publish.single(MQTT_PATH,str(lon)+","+str(lat),hostname=MQTT_SERVER)
