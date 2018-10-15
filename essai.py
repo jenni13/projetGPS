@@ -1,4 +1,5 @@
 #! /usr/bin/python3
+#sudo gpsd /dev/ttyS0 -F /var/run/gpsd.sock
 
 from gps3 import agps3
 import os

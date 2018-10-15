@@ -1,4 +1,4 @@
-#! /usr/bin/python2
+#! /usr/bin/python3
 import webbrowser
 long = 48.8589507
 latt = 2.2770205
