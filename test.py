@@ -7,11 +7,11 @@ from gps import *
 from time import *
 import time
 import threading
-import webbrowser
+#import webbrowser
 
-url = 'http://www.google.fr/maps/'
-chrome_path = '/usr/bin/google-chrome %s'
-os.system('clear')
+#url = 'http://www.google.fr/maps/'
+#chrome_path = '/usr/bin/google-chrome %s'
+#os.system('clear')
 
 class GpsPoller(threading.Thread):
 	def __init__(self):
@@ -36,16 +36,16 @@ if __name__ == '__main__':
 		os.system('clear')
 
 		print
-		print ' GPS reading'
-		print '----------------------------------------'
-		print 'latitude    ' , gpsd.fix.latitude
-		print 'longitude   ' , gpsd.fix.longitude
+		print' GPS reading'
+		print'----------------------------------------'
+		print'latitude    ' , gpsd.fix.latitude
+		print'longitude   ' , gpsd.fix.longitude
 		time.sleep(5)
 		if time.time() >= t_end:
 			break
 
 	gpsp.running = False
-	print 'redirection page web'
-	webbrowser.get(chrome_path).open(url)
-	print 'allo'
+	#print('redirection page web')
+	#webbrowser.get(chrome_path).open(url)
+	#print('allo')
 	sys.exit(0)
