@@ -31,7 +31,16 @@ for new_data in gps_socket:
 lon = data_stream.lat
 lat = data_stream.lon
 
-MQTT_SERVER = "192.168.0.88"
+MQTT_SERVER = "192.168.1.68"
 MQTT_PATH = "LongLat"
 
-publish.single(MQTT_PATH,str(lon)+","+str(lat),hostname=MQTT_SERVER)
+
+for new_data in gps_socket:
+        try:
+                if new_data:
+                        publish.single(MQTT_PATH,str(lon)+","+str(lat),hostname=MQTT_SERVER)
+                        time.sleep(6)
+        except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
+                print ("\nKilling Thread...")
+                sys.exit(0)
+
