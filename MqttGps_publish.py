@@ -28,18 +28,29 @@ for new_data in gps_socket:
                 if time.time() >= t_end:
                         break
 
-lon = data_stream.lat
-lat = data_stream.lon
+lon = data_stream.lon
+lat = data_stream.lat
 
 MQTT_SERVER = "192.168.1.68"
 MQTT_PATH = "LongLat"
 
+publish.single(MQTT_PATH,str(lat)+","+str(lon),hostname=MQTT_SERVER)
+
+#MQTT_SERVER = "192.168.1.68"
+#MQTT_PATH = "LongLat"
+
 
 for new_data in gps_socket:
         try:
-                if new_data:
-                        publish.single(MQTT_PATH,str(lon)+","+str(lat),hostname=MQTT_SERVER)
+                lon1=data_stream.lon
+                lat1=data_stream.lat
+                if lon1 != lon and lat1 != lat:
+                        print("dans if "+new_data+"\n")
+                        publish.single(MQTT_PATH,str(lat)+","+str(lon),hostname=MQTT_SERVER)
                         time.sleep(6)
+                else:
+                        time.sleep(5)
+
         except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
                 print ("\nKilling Thread...")
                 sys.exit(0)
