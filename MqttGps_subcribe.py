@@ -5,8 +5,8 @@ import webbrowser
 import sys
 #MQTT_SERVER = "localhost"
 #fac:
-#MQTT_SERVER = "192.168.0.88"
-MQTT_SERVER = "192.168.1.68"
+MQTT_SERVER = "192.168.0.88"
+
 MQTT_PATH = "LongLat"
 
 # The callback for when the client receives a CONNACK response from the server.
