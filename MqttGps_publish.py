@@ -30,8 +30,11 @@ for new_data in gps_socket:
 
 lon = data_stream.lon
 lat = data_stream.lat
+print('Latitude = ', data_stream.lat)
+print('Longitude =', data_stream.lon)
+MQTT_SERVER = "192.168.0.88"
 
-MQTT_SERVER = "192.168.1.68"
+
 MQTT_PATH = "LongLat"
 
 publish.single(MQTT_PATH,str(lat)+","+str(lon),hostname=MQTT_SERVER)
@@ -44,7 +47,14 @@ for new_data in gps_socket:
         try:
                 lon1=data_stream.lon
                 lat1=data_stream.lat
+                print('Lon = '+str(lon))
+                print('lat = '+str(lat))
+                print('Lon1 = '+str(lon1))
+                print('lat1 = '+str(lat1))
+
                 if lon1 != lon and lat1 != lat:
+                        lon = lon1
+                        lat = lat1
                         print("dans if "+new_data+"\n")
                         publish.single(MQTT_PATH,str(lat)+","+str(lon),hostname=MQTT_SERVER)
                         time.sleep(6)
